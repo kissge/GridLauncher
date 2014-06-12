@@ -71,7 +71,7 @@ public class UserTest {
             boolean correct = tests.get(count - 1).equals(answer);
             Toast.makeText(activity, correct ? "Correct!" : "Wrong :(", Toast.LENGTH_SHORT).show();
             Log.d("UserTest", "Test " + count + " " + (correct ? "correct" : "wrong"));
-            if (count >= tests.size()) {
+            if (count >= 20) {
                 Log.d("UserTest", "-- finish --");
                 showText("Finish");
                 count = 0;
