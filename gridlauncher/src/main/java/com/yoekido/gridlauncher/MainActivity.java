@@ -23,14 +23,8 @@ public class MainActivity extends Activity {
         gridView.setAdapter(new IconAdapter(this, getApplication()));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        ((TextView) v.findViewById(R.id.grid_item_label))
-                                .getText(), Toast.LENGTH_SHORT
-                ).show();
-
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(getApplicationContext(), ((TextView) v.findViewById(R.id.grid_item_label)).getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }

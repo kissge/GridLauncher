@@ -13,8 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class IconAdapter extends BaseAdapter {
+    public List<App> list;
     private Context context;
-    private List<App> list;
 
     IconAdapter(Context context, Application application) {
         this.context = context;
@@ -115,19 +115,11 @@ public class IconAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View gridView;
-
-        if (convertView == null) {
-            gridView = new View(context);
-            gridView = inflater.inflate(R.layout.icon, null);
-            TextView textView = (TextView) gridView.findViewById(R.id.grid_item_label);
-            textView.setText(list.get(position).name);
-            ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_item_image);
-            imageView.setImageDrawable(list.get(position).icon);
-        } else {
-            gridView = (View) convertView;
-        }
-
+        View gridView = inflater.inflate(R.layout.icon, null);
+        TextView textView = (TextView) gridView.findViewById(R.id.grid_item_label);
+        textView.setText(list.get(position).name);
+        ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_item_image);
+        imageView.setImageDrawable(list.get(position).icon);
         return gridView;
     }
 
@@ -138,7 +130,7 @@ public class IconAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return list.get(position);
     }
 
     @Override
