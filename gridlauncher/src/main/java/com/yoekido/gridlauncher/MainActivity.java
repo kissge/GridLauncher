@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+    private UserTest userTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +21,23 @@ public class MainActivity extends Activity {
 
         GridView gridView = (GridView) findViewById(R.id.gridView);
 
-        gridView.setAdapter(new IconAdapter(this, getApplication()));
+        IconAdapter iconAdapter = new IconAdapter(this, getApplication());
+        gridView.setAdapter(iconAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView) v.findViewById(R.id.grid_item_label)).getText(), Toast.LENGTH_SHORT).show();
+                userTest.next(((TextView) v.findViewById(R.id.grid_item_label)).getText().toString());
             }
         });
+        gridView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                userTest.touch();
+                return false;
+            }
+        });
+
+        userTest = new UserTest(this, iconAdapter, gridView);
     }
 
 
@@ -43,7 +54,8 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_usertest) {
+            userTest.start();
             return true;
         }
         return super.onOptionsItemSelected(item);
