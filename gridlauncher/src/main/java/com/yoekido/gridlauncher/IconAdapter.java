@@ -43,8 +43,6 @@ public class IconAdapter extends BaseAdapter {
                 new App("gold", 0xffd700),
                 new App("gray", 0x808080),
                 new App("green", 0x00ff00),
-                new App("indigo", 0x4b0082),
-                new App("ivory", 0xfffff0),
                 new App("lavender", 0xb57edc),
                 new App("lemon", 0xfff700),
                 new App("lime", 0xbfff00),
@@ -67,11 +65,9 @@ public class IconAdapter extends BaseAdapter {
                 new App("sapphire", 0x0f52ba),
                 new App("scarlet", 0xff2400),
                 new App("silver", 0xc0c0c0),
-                new App("turquoise", 0x40e0d0),
                 new App("violet", 0xee82ee),
                 new App("viridian", 0x40826d),
-                new App("white", 0xffffff),
-                new App("yellow", 0xffff00)
+                new App("white", 0xffffff)
         );
     }
 
